@@ -49,7 +49,7 @@ extern crate parking_lot;
 
 use rstd::{result, prelude::*};
 use runtime_support::storage::StorageValue;
-use primitives::traits::{As, Zero};
+use primitives::traits::{As, Zero, AuthorityIdFor};
 use timestamp::OnTimestampSet;
 #[cfg(feature = "std")]
 use timestamp::TimestampInherentData;
@@ -208,6 +208,9 @@ impl<T: Trait> Module<T> {
 		// we double the minimum block-period so each author can always propose within
 		// the majority of their slot.
 		<timestamp::Module<T>>::block_period().as_().saturating_mul(2)
+	}
+
+	pub fn authorities() -> Vec<AuthorityIdFor<Block>> {
 	}
 
 	fn on_timestamp_set<H: HandleReport>(now: T::Moment, slot_duration: T::Moment) {

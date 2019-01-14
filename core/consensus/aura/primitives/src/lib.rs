@@ -19,6 +19,7 @@
 #![cfg_attr(not(feature = "std"), no_std)]
 
 use substrate_client::decl_runtime_apis;
+use runtime_primitives::traits::AuthorityIdFor;
 
 decl_runtime_apis! {
 	/// API necessary for block authorship with aura.
@@ -29,5 +30,8 @@ decl_runtime_apis! {
 		///
 		/// Dynamic slot duration may be supported in the future.
 		fn slot_duration() -> u64;
+
+		/// Returns the authorities.
+		fn authorities() -> Vec<AuthorityIdFor<Block>>;
 	}
 }

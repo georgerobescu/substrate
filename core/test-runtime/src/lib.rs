@@ -214,10 +214,6 @@ impl_runtime_apis! {
 			version()
 		}
 
-		fn authorities() -> Vec<Ed25519AuthorityId> {
-			system::authorities()
-		}
-
 		fn execute_block(block: Block) {
 			system::execute_block(block)
 		}
