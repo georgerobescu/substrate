@@ -46,6 +46,8 @@ pub struct AuraConsensusData {
 /// Runtime-APIs
 pub mod api {
 	use client::decl_runtime_apis;
+	use client::runtime_api::ExecutionContext;
+
 	decl_runtime_apis! {
 		/// API necessary for block authorship with aura.
 		pub trait AuraApi {
